@@ -1,0 +1,42 @@
+<h1>dev-tools应该能看到一条请求(lazy-lazy-module.js)，页面不刷新的情况只会加载这一次</h1>
+<h2>生产环境会有带hash的</h2>
+
+
+<h3>演示常见的查询操作</h3>
+
+<form nz-form nzLayout="inline">
+  <nz-form-item>
+    <nz-form-control>
+      <input nz-input placeholder="测试字段一">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <input nz-input placeholder="测试字段二">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="primary" (click)="query($event)">查询</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+<nz-table #nzTable [nzData]="list" [nzPageSize]="10" *ngIf="hasList">
+  <thead>
+    <tr>
+      <th>标题</th>
+
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of nzTable.data">
+      <td>{{i.name}}</td>
+
+      <td>
+{{i.desc}}
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

@@ -1,0 +1,13 @@
+{
+  "name": "demo-root",
+  "description": "可以用服务端渲染",
+  "scripts": {
+    "start": "serve -s -l 4100"
+  },
+  "author": "Joel Denning",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^11.1.0"
+  },
+  "dependencies": {}
+}

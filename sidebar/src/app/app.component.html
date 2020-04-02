@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <div class="sidebar-header">
+    <nz-avatar nzSize="large" nzIcon="user"></nz-avatar>
+    <div class="nick">
+      用户名称
+    </div>
+    <h1>123</h1>
+  </div>
+  <ul nz-menu nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+    <li nz-submenu nzTitle="微前端示例应用" nzIcon="setting">
+      <ul>
+        <li nz-menu-item (click)="navigate('/app1')">APP1</li>
+        <li nz-menu-item (click)="navigate('/app2')">APP2</li>
+      </ul>
+    </li>
+  </ul>
+  <!-- <div class="toggle-button" (click)="toggle()">
+    <i nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+  </div> -->
+</div>

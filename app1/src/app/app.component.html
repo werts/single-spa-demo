@@ -1,0 +1,51 @@
+<nz-card nzTitle="这是APP1">
+  <nz-row [nzGutter]="16">
+    <nz-col [nzSpan]="12">
+      <nz-statistic [nzValue]="1949101 | number" [nzTitle]="'Active Users'"></nz-statistic>
+    </nz-col>
+    <nz-col [nzSpan]="12">
+      <nz-statistic [nzValue]="2019.111 | number: '1.0-2'" [nzTitle]="'Account Balance (CNY)'"></nz-statistic>
+    </nz-col>
+  </nz-row>
+
+  <nz-divider></nz-divider>
+
+  <nz-row [nzGutter]="16">
+    <nz-col [nzSpan]="12">
+      <nz-statistic [nzValue]="1128 | number" [nzTitle]="'Feedback'" [nzPrefix]="prefixTpl"></nz-statistic>
+      <ng-template #prefixTpl><i nz-icon nzType="like"></i></ng-template>
+    </nz-col>
+    <nz-col [nzSpan]="12">
+      <nz-statistic [nzValue]="93" [nzTitle]="'Unmerged'" [nzSuffix]="'/ 100'"></nz-statistic>
+    </nz-col>
+  </nz-row>
+
+  <nz-divider></nz-divider>
+
+  <nz-tabset>
+    <nz-tab nzTitle="Tab 1">
+      Content of Tab Pane 1
+    </nz-tab>
+    <nz-tab nzTitle="Tab 2">
+      Content of Tab Pane 2
+    </nz-tab>
+    <nz-tab nzTitle="Tab 3">
+      Content of Tab Pane 3
+    </nz-tab>
+  </nz-tabset>
+
+  <nz-divider></nz-divider>
+
+  <button nz-button [nzType]="'primary'" (click)="showModal()"><span>展示常见模态框</span></button>
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <p>Content one</p>
+    <p>Content two</p>
+    <p>Content three</p>
+  </nz-modal>
+
+  <nz-divider></nz-divider>
+
+  <h2>展示不同微前端跳转</h2>
+
+  <a href="/#/auth/login">点击跳转到另一个微前端（演示用户登录）</a>
+</nz-card>

@@ -1,0 +1,17 @@
+<form nz-form class="micro-auth-login" [formGroup]="loginForm">
+  <nz-form-item>
+    <nz-form-control>
+      <input nz-input placeholder="用户名" formControlName="user">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <input nz-input placeholder="密码" type="password" formControlName="passwd">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="primary" nzBlock [disabled]="loginForm.invalid" (click)="loggin()">登录</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

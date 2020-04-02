@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src *  data: blob: 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * data: blob: 'unsafe-inline'; font-src * data: blob: 'unsafe-inline';">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>微前端测试应用</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="importmap-type" content="systemjs-importmap">
+  <script type="systemjs-importmap">
+      {
+        "imports": {
+          "app1": "http://micro.apps/app1/main-es5.d22e135009a288e24b5b.js",
+          "app2": "http://micro.apps/app2/main-es2015.6ca2a68f27661777e074.js",
+          "sidebar": "http://micro.apps/sidebar/main-es5.34b0333a504a43db0930.js",
+          "auth": "http://micro.apps/auth/main-es5.b34bab7948fbb131c1ce.js",
+          "single-spa": "./libs/single-spa.min.js"
+        }
+      }
+    </script>
+  <link rel="preload" href="./libs/single-spa.min.js" as="script" crossorigin="anonymous" />
+  <script src='./libs/core-js-bundle.js'></script>
+  <script src="./libs/zone.js"></script>
+  <script src="./libs/system.min.js"></script>
+  <script src="./libs/amd.min.js"></script>
+  <script src="./libs/named-exports.js"></script>
+  <script src="./libs/named-register.min.js"></script>
+  <script src="./libs/import-map-overrides.js"></script>
+  <link rel="stylesheet" href="./static/css.css">
+</head>
+
+<body>
+  <div class="micro-layout micro-layout-default">
+    <div class="micro-sidebar">
+      <div id="microAppSidebar"></div>
+    </div>
+    <div class="micro-content">
+      <div id="microApp1"></div>
+      <div id="microApp2"></div>
+    </div>
+  </div>
+
+
+  <div id="microAppAuth"></div>
+
+  <script>
+    function showExcept(app) {
+      return function (location) {
+        return location.hash.substr(1).startsWith(app)
+      };
+    }
+    System.import('single-spa').then(function (singleSpa) {
+      singleSpa.registerApplication(
+        'app1',
+        function () {
+          return System.import('app1');
+        },
+        showExcept('/app1'),
+        {
+          acl:[],
+          jkkkl:[],
+          apiurl:'http://plat.winxuan.com'
+        }
+      );
+
+      singleSpa.registerApplication(
+        'auth',
+        function () {
+          return System.import('auth');
+        },
+        showExcept('/auth')
+      );
+
+      singleSpa.registerApplication('sidebar', function () {
+        return System.import('sidebar')
+      }, function () {
+        return !location.hash.substr(1).startsWith('/auth');
+      }, {
+        a: 'adasfd',
+        theme: 'dark'
+      });
+
+      singleSpa.registerApplication(
+        'app2',
+        function () {
+          return System.import('app2');
+        },
+        showExcept('/app2')
+      );
+
+      singleSpa.start();
+    })
+  </script>
+</body>
+
+</html>

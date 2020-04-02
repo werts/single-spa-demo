@@ -1,0 +1,9 @@
+.micro-sidebar{
+  width: 200px;
+  position: fixed;
+  left: 0;
+}
+
+.micro-content{
+  margin-left: 199px;
+}
