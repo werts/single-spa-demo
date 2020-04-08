@@ -22,6 +22,8 @@
   </nz-form-item>
 </form>
 
+<a [routerLink]="['/app2/lazy/tt']" routerLinkActive="router-link-active">asfdasfdsadfsa</a>
+
 <nz-table #nzTable [nzData]="list" [nzPageSize]="10" *ngIf="hasList">
   <thead>
     <tr>
@@ -35,7 +37,7 @@
       <td>{{i.name}}</td>
 
       <td>
-{{i.desc}}
+        {{i.desc}}
       </td>
     </tr>
   </tbody>

@@ -3,14 +3,14 @@ import { RouteReuseStrategy, DetachedRouteHandle, ActivatedRouteSnapshot } from 
 export class CustomReuseStrategy implements RouteReuseStrategy {
   private handlers = {};
 
-  private abc = 'app2';
+  private abc = 'app1';
 
   private hasInValidRoute(route: ActivatedRouteSnapshot) {
-    return route.routeConfig.path === '**'|| !route.routeConfig || route.routeConfig.loadChildren || route.routeConfig.children;
+    return route.routeConfig.path === '**' || !route.routeConfig || route.routeConfig.loadChildren || route.routeConfig.children;
   }
 
   constructor() {
-    console.log('app2 init');
+    console.log('app1 init');
   }
 
   get(url) {
@@ -45,6 +45,7 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
 
   /** 从缓存中获取快照，若无则返回nul */
   retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle {
+    if (this.hasInValidRoute(route)) return null;
 
     // console.debug('retrieve======>', route);
     if (!this.handlers[this.getUrl(route)]) {

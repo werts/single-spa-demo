@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { LazyRoutingModule } from './lazy-routing.module';
 import { LazyTestModule } from './test/test.module';
 import { SharedComponentsModule } from '../shared/components/components.module';
+import { HelloComponent } from './tt';
 
 @NgModule({
   imports: [
@@ -11,7 +12,9 @@ import { SharedComponentsModule } from '../shared/components/components.module';
     LazyRoutingModule
   ],
   exports: [],
-  declarations: [],
+  declarations: [
+    HelloComponent
+  ],
   providers: [],
 })
 export class LazyModule { }

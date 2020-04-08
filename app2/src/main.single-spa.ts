@@ -26,5 +26,14 @@ const lifecycles = singleSpaAngular({
 });
 
 export const bootstrap = lifecycles.bootstrap;
-export const mount = lifecycles.mount;
-export const unmount = lifecycles.unmount;
+export const mount = [() => Promise.resolve().then(() => {
+  const ele = document.getElementById('microApp2');
+
+  ele.style.display = 'block';
+}), lifecycles.mount];
+
+export const unmount = () => Promise.resolve().then(() => {
+  const ele = document.getElementById('microApp2');
+
+  ele.style.display = 'none';
+});

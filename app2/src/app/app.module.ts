@@ -10,6 +10,8 @@ import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { SharedComponentsModule } from './shared/components/components.module';
 import { EmptyRouteComponent } from './empty-route/empty-route.component';
+import { RouteReuseStrategy } from '@angular/router';
+import { CustomReuseStrategy } from './shared/components/route-strategy';
 
 
 registerLocaleData(zh);
@@ -29,6 +31,7 @@ registerLocaleData(zh);
     AppRoutingModule,
   ],
   bootstrap: [AppComponent],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }]
+  providers: [{ provide: NZ_I18N, useValue: zh_CN },
+  { provide: RouteReuseStrategy, useClass: CustomReuseStrategy }]
 })
 export class AppModule { }
